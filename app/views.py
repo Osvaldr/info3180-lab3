@@ -14,7 +14,7 @@ from form import MyForm
 # Routing for your application.
 ###
 
-@app.route('/contact', methods=["post","get"])
+@app.route('/contact', methods=["POST","GET"])
 def contact():
     myform = MyForm()
 
@@ -31,8 +31,9 @@ def contact():
             msg	=	Message(subject, sender=(firstname + ' ' + lastname,email),	recipients=["dc253b1ab8-38a945@inbox.mailtrap.io"])
             msg.body	=	message
             mail.send(msg)
+            
             flash('You have successfully filled out the form', 'success')
-            return render_template('home.html', form=myform)
+            return redirect(url_for("home"))
 
         #flash_errors(myform)
         """Render website's contact page."""

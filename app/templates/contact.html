@@ -4,7 +4,6 @@
     <h2>Contact Form</h2>
     <p>Please enter the required information</p>
     <form method="POST" action="{{ url_for('contact') }}">
-        {% include 'flash_messages.html' %}
         {{ form.csrf_token }}
         <div class="form-group">
             {{ form.firstname.label }} {{ form.firstname(class="form-control") }}
