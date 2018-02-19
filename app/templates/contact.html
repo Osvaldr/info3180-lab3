@@ -2,23 +2,53 @@
 
 {% block main %}
     <h2>Contact Form</h2>
-    <p>Please enter the required information</p>
+    <p>Fill in this form to contact site owners</p>
     <form method="POST" action="{{ url_for('contact') }}">
         {{ form.csrf_token }}
-        <div class="form-group">
-            {{ form.firstname.label }} {{ form.firstname(class="form-control") }}
+        <div class="form-group col-md-6">
+            {{ form.firstname.label }}<font color=#BA2C48>(Required)</font></br>
+            
+            {% for message in form.firstname.errors %}
+                        <div class="error">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.firstname(class="form-control") }}
         </div>
-        <div class="form-group">
-            {{ form.lastname.label }} {{ form.lastname(class="form-control") }}
+        <div class="form-group col-md-6">
+            {{ form.lastname.label }}<font color=#BA2C48>(Required)</font></br>
+            
+            {% for message in form.lastname.errors %}
+                        <div class="error">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.lastname(class="form-control") }}
         </div>
-        <div class="form-group">
-            {{ form.email.label }} {{ form.email(class="form-control", placeholder="jdoe@example.com") }}
+        <div class="form-group col-md-6">
+            {{ form.email.label }}<font color=#BA2C48>(Required)</font></br>
+            
+            {% for message in form.email.errors %}
+                        <div class="error">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.email(class="form-control", placeholder="jdoe@example.com") }}
         </div>
-        <div class="form-group">
-            {{ form.subject.label }} {{ form.subject(class="form-control") }}
+        <div class="form-group col-md-6">
+            {{ form.subject.label }}<font color=#BA2C48>(Required)</font></br>
+            
+            {% for message in form.subject.errors %}
+                        <div class="error">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.subject(class="form-control") }}
         </div>
-        <div class="form-group">
-            {{ form.message.label }} {{ form.message(class="form-control") }}
+        <div class="form-group col-md-6">
+            {{ form.message.label }}<font color=#BA2C48>(Required)</font></br>
+            
+            {% for message in form.message.errors %}
+                        <div class="error">{{message}}</div>
+                    {% endfor %}
+            
+            {{ form.message(class="form-control") }}
         </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
